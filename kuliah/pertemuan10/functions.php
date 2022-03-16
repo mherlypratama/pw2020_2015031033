@@ -22,3 +22,20 @@ function query($query)
   }
   return $rows;
 }
+
+function tambah($data)
+{
+  $conn = koneksi();
+  $email = htmlspecialchars($data['email']);
+  $nama = htmlspecialchars($data['nama']);
+  $npm = htmlspecialchars($data['npm']);
+  $departemen = htmlspecialchars($data['departemen']);
+  $jabatan = htmlspecialchars($data['jabatan']);
+  $prodi = htmlspecialchars($data['prodi']);
+
+
+  $query = "INSERT INTO `data_pengurus` (`email`, `nama`, `npm`, `departemen`, `jabatan`, `prodi`) VALUES ('$email', '$nama', '$npm', '$departemen', '$jabatan', '$prodi');";
+  mysqli_query($conn, $query);
+  echo mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
